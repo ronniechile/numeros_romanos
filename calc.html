@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="style.css" href="/style.css">
+    <script type="text/javascript">
+          
+    var numeroromano = function( numero ) {
+    var romano = "";
+    var unidades = [ "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" ];
+    var decenas = [ "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" ];
+    var centenas = [ "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" ];
+    var miles = [ "", "M", "MM", "MMM" ];
+    var numero = numero.toString();
+    var longitud = numero.length;
+  
+    var unidad = numero.substring( longitud - 1, longitud );
+    var decena = numero.substring( longitud - 2, longitud - 1 );
+    var centena = numero.substring( longitud - 3, longitud - 2 );
+    var mil = numero.substring( longitud - 4, longitud - 3 );
+    
+    if (numero < 10) {
+      romano = unidades[numero];
+    } 
+    if (numero >= 10 && numero < 100) {
+        romano = decenas[decena] + unidades[unidad];
+    } 
+    if (numero >= 100 && numero < 1000) {
+        romano = centenas[centena] + decenas[decena] + unidades[unidad];
+    } 
+    if (numero > 999 && numero < 4000) {
+         romano = miles[mil] + centenas[centena] + decenas[decena] + unidades[unidad];
+    }
+    return romano
+   
+
+  }
+       
+  function recibir(){
+        var text =document.getElementById("texto").value;
+        document.write('<p style="color:red;font-size:45px;text-align:center">Vamos otra vez!</p>');
+      
+        
+
+// End -->
+        setTimeout("location.reload(true)",5000); // 5000 milisegundos de retardo
+
+       
+        alert("El numero Romano es: "+ numeroromano(text));
+        
+        /* document.open();
+  document.write( newHtmlContents );
+  document.close(); */
+        /* ("<br>");
+        ("El numero Decimal es: "+ parseInt(text)); */
+        
+       }
+       
+       
+    </script>
+    
+</head>
+
+
+<style>
+   
+
+body{
+    background-color: coral;
+    font-size: x-large;
+  
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+input[type="text"]{
+    font-size: xx-large;
+    
+        color: purple;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(169, 36, 36);
+    padding: 5px;
+    background-color: rgb(11, 177, 108);
+}
+</style> 
+   <article>
+
+    
+    <h1>++++++++++++  Calculadora Romana  +++++++++++</h1>
+<br><br><br>
+
+<form id="formulario" method="post" >
+        
+        <input type="text" style="width : 200px; "id="texto" placeholder="numero" pattern="[1-3999]">
+        <input type="button" name="enviar" value="Enviar" onclick="recibir()">
+       
+        
+     
+    </form>
+    
+
+      
+    
+   
+</body>
+
+</html>
